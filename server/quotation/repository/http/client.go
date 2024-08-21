@@ -40,6 +40,10 @@ func (c Client) GetByCurrencies(ctx context.Context, currencies []string) ([]quo
 	}
 	defer res.Body.Close()
 
+	if res.StatusCode == http.StatusNotFound {
+		return []quotation.Quotation{}, fmt.Errorf("%w %s", quotation.ErrCoinNotExists, params)
+	}
+
 	data, err := io.ReadAll(res.Body)
 	if err != nil {
 		return []quotation.Quotation{}, err
