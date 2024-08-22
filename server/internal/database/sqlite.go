@@ -27,7 +27,7 @@ func NewDatabase() (*sql.DB, error) {
 
 func runMigrations(db *sql.DB) error {
 	query := fmt.Sprintf(
-		`CREATE TABLE IF NOT EXISTS [quotations] (%s, %s, %s, %s);`,
+		`CREATE TABLE IF NOT EXISTS [quotation] (%s, %s, %s, %s);`,
 		"code TEXT NOT NULL",
 		"code_in TEXT NOT NULL",
 		"bid REAL NOT NULL",
