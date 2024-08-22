@@ -27,7 +27,7 @@ func RegisterEndpoints(handler Search, router *http.ServeMux) {
 }
 
 func (s Search) Search(w http.ResponseWriter, r *http.Request) {
-	quotations, err := s.reader.Search(r.Context(), []string{"USD-EUR"})
+	quotations, err := s.reader.Search(r.Context(), []string{"USD-BRL"})
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(err.Error()))
